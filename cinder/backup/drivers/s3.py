@@ -203,6 +203,7 @@ class S3BackupDriver(chunkeddriver.ChunkedBackupDriver):
             conn_args['verify'] = CONF.backup_s3_ca_cert_file
         else:
             conn_args['verify'] = False
+        # 创建连接
         self.conn = boto3.client('s3', **conn_args)
 
     @staticmethod
@@ -335,6 +336,7 @@ class S3ObjectWriter(object):
             put_args.update(
                 SSECustomerAlgorithm=CONF.backup_s3_sse_customer_algorithm,
                 SSECustomerKey=CONF.backup_s3_sse_customer_key)
+        # 进行数据写入
         self.conn.put_object(**put_args)
         return contentmd5
 
