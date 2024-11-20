@@ -1203,6 +1203,9 @@ class CreateVolumeFromSpecTask(flow_utils.CinderTask):
                 context: cinder_context.RequestContext,
                 volume: objects.Volume,
                 volume_spec) -> dict:
+        """
+        执行卷创建
+        """
         volume_spec = dict(volume_spec)
         volume_id = volume_spec.pop('volume_id', None)
         if not volume_id:
@@ -1375,6 +1378,7 @@ def get_flow(context, manager, db, driver, scheduler_rpcapi, host, volume,
     if volume.use_quota or not volume.is_migration_target():
         volume_flow.add(NotifyVolumeActionTask(db, 'create.start'))
         end_notify_suffix = 'create.end'
+    # 设置任务创建器
     volume_flow.add(CreateVolumeFromSpecTask(manager,
                                              db,
                                              driver,

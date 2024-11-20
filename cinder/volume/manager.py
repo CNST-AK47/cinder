@@ -279,6 +279,7 @@ class VolumeManager(manager.CleanableManager,
         if not volume_driver:
             # Get from configuration, which will get the default
             # if its not using the multi backend
+            # 卷驱动器
             volume_driver = self.configuration.volume_driver
         if volume_driver in MAPPING:
             LOG.warning("Driver path %s is deprecated, update your "

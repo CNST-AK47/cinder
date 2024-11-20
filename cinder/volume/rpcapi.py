@@ -174,6 +174,9 @@ class VolumeAPI(rpc.RPCAPI):
                       filter_properties: Optional[dict],
                       allow_reschedule: bool = True) -> None:
         cctxt = self._get_cctxt(volume.service_topic_queue)
+        """
+        创建卷
+        """
         cctxt.cast(ctxt, 'create_volume',
                    request_spec=request_spec,
                    filter_properties=filter_properties,

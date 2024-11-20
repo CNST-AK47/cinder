@@ -236,6 +236,44 @@ class API(base.Base):
                group_snapshot=None,
                source_group=None,
                backup: Optional[objects.Backup] = None):
+        """
+        创建卷
+
+        Args:
+            context (context.RequestContext): _description_
+            size (Union[str, int]): _description_
+            name (Optional[str]): _description_
+            description (Optional[str]): _description_
+            snapshot (Optional[objects.Snapshot], optional): _description_. Defaults to None.
+            image_id (Optional[str], optional): _description_. Defaults to None.
+            volume_type (Optional[objects.VolumeType], optional): _description_. Defaults to None.
+            metadata (Optional[dict], optional): _description_. Defaults to None.
+            availability_zone (Optional[str], optional): _description_. Defaults to None.
+            source_volume (Optional[objects.Volume], optional): _description_. Defaults to None.
+            scheduler_hints (_type_, optional): _description_. Defaults to None.
+            source_replica (_type_, optional): _description_. Defaults to None.
+            consistencygroup (Optional[objects.ConsistencyGroup], optional): _description_. Defaults to None.
+            cgsnapshot (Optional[objects.CGSnapshot], optional): _description_. Defaults to None.
+            source_cg (_type_, optional): _description_. Defaults to None.
+            group (Optional[objects.Group], optional): _description_. Defaults to None.
+            group_snapshot (_type_, optional): _description_. Defaults to None.
+            source_group (_type_, optional): _description_. Defaults to None.
+            backup (Optional[objects.Backup], optional): _description_. Defaults to None.
+
+        Raises:
+            exception.InvalidInput: _description_
+            exception.InvalidInput: _description_
+            exception.InvalidInput: _description_
+            exception.InvalidInput: _description_
+            exception.InvalidInput: _description_
+            exception.InvalidInput: _description_
+            exception.InvalidInput: _description_
+            exception.InvalidInput: _description_
+            exception.CinderException: _description_
+
+        Returns:
+            _type_: _description_
+        """
 
         if image_id:
             context.authorize(vol_policy.CREATE_FROM_IMAGE_POLICY)

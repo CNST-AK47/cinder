@@ -395,6 +395,7 @@ class VolumeController(volumes_v2.VolumeController):
                     "volumes.")
             raise exc.HTTPBadRequest(explanation=msg)
         try:
+            # 进行卷创建
             new_volume = self.volume_api.create(
                 context, size, volume.get('display_name'),
                 volume.get('display_description'), **kwargs)
